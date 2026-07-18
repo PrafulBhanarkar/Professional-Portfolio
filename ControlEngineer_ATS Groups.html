@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praful Bhanarkar — Control Engineer Portfolio | ATS Group</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              deep: '#051937',
+              brand: '#0B2545',
+            },
+            cloud: '#0176D3',
+            sky: '#1B96FF',
+            mint: {
+              bright: '#2ECC8F',
+              pass: '#04844B',
+            },
+            alert: '#FF6B35',
+            paper: '#F4F7FB',
+            ink: '#16325C',
+            muted: '#5A7184',
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* --------------------------------------------------------------------------
+       1. CUSTOM WEB SCROLLBAR STYLES
+       -------------------------------------------------------------------------- */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F4F7FB;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #0176D3;
+      border: 3px solid #F4F7FB;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #051937;
+    }
+
+    /* --------------------------------------------------------------------------
+       2. SCROLL REVEAL ANIMATIONS
+       -------------------------------------------------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --------------------------------------------------------------------------
+       3. CUSTOM TRANSITIONS & ACCENTS
+       -------------------------------------------------------------------------- */
+    .accordion-item,
+    .accordion-panel {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    ::selection {
+      background-color: #1B96FF;
+      color: #FFFFFF;
+    }
+
+    /* ---------- Nav (shared across all pages) ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #bfc8d3;
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy-deep);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #1b96ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .navlinks a {
+      transition: color .2s;
+    }
+
+    .navlinks a:hover,
+    .navlinks a.active {
+      color: var(--cloud-blue);
+    }
+
+    .nav-cta {
+      background: #051937;
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--cloud-blue);
+      transform: translateY(-1px);
+    }
+
+    @media(max-width:760px) {
+      .navlinks {
+        display: none;
+      }
+    }
+
+.back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 26px;
+      transition: color .2s;
+      margin-left: 307px;
+    }
+
+    .back-link:hover {
+      color: #2ecc8f;
+    }
+
+    
+
+  </style>
+</head>
+
+  <header>
+    <nav>
+      <div class="brand"><span class="brand-mark">PB</span> Praful Bhanarkar</div>
+      <div class="navlinks">
+        <a href="Praful_Bhanarkar_Portfolio.html#summary">Summary</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#certs">Certifications</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#skills">Skills</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:prafulbhanarkar200@gmail.com">Hire me</a>
+    </nav>
+  </header>
+
+
+<body class="bg-paper text-ink font-sans antialiased selection:bg-sky selection:text-white">
+
+  <section class="relative overflow-hidden bg-navy-deep text-white py-20 px-6" style="margin-top: 70px;">
+    <div class="absolute inset-0 opacity-30 pointer-events-none">
+      <div
+        class="absolute top-[-10%] left-[15%] w-[800px] h-[500px] rounded-full bg-gradient-to-br from-cloud to-sky/10 blur-[130px]">
+      </div>
+      <div
+        class="absolute bottom-[-10%] right-[5%] w-[600px] h-[400px] rounded-full bg-gradient-to-br from-mint-bright to-mint-bright/10 blur-[110px]">
+      </div>
+    </div>
+    
+    <a class="back-link" href="Praful_Bhanarkar_Portfolio.html#experience" style="display:flex; align-items:center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        style="margin-right:8px;">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Back to Work Experience
+    </a>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div
+        class="inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-widest text-mint-bright bg-mint-bright/10 border border-mint-bright/20 px-3.5 py-1.5 rounded-full mb-6">
+        <span class="w-2 h-2 rounded-full bg-mint-bright animate-pulse"></span>
+        TC-000 · Experience Log
+      </div>
+
+
+      <h1
+        class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-4xl">
+        Control Engineer — <span class="text-sky">ATS Group</span>
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-6 text-[#A0B0C0] text-sm font-medium">
+        <span class="flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 text-mint-bright"></i> Pune, Maharashtra, IN
+        </span>
+        <span class="flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4 text-mint-bright"></i> 2020 – 2021 (1 Year)
+        </span>
+        <a href="https://www.ats-group.com/" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-1.5 text-sky hover:text-mint-bright transition-colors">
+          <i data-lucide="external-link" class="w-4 h-4"></i> Official Site: ATS Group
+        </a>
+      </div>
+
+      <p class="mt-6 text-[#D1D9E0] text-base md:text-lg leading-relaxed max-w-3xl" style="max-width: 60rem;">
+        Control Engineer specializing in industrial automation and turnkey material handling solutions. Experienced in
+        deploying, commissioning, and optimization of robust programmable logic controls (PLCs) and conveying systems at
+        <span class="text-white font-medium underline decoration-mint-bright decoration-2 underline-offset-4">Asian
+          Paints Vizag</span> and <span
+          class="text-white font-medium underline decoration-sky decoration-2 underline-offset-4">FIAT Automotive</span>
+        plants. Part of a global industrial group delivering smart paint-shop conveyors, monorails, and assembly
+        structures.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 mt-8">
+        <span class="text-xs text-[#A0B0C0] font-mono mr-2">Jump to section:</span>
+        <a href="#experience"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+          Work Experience
+        </a>
+        <a href="#projects"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+          Featured Projects
+        </a>
+        <a href="#skills"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+          Technical Skills
+        </a>
+        <a href="#about"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+          About Profile
+        </a>
+        <a href="#contact"
+          class="px-4 py-2 rounded-full bg-sky/20 hover:bg-sky/30 text-sky hover:text-white text-xs font-semibold tracking-wide transition-all border border-sky/30">
+          Contact Me
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-10 border-t border-white/10 max-w-4xl">
+        <div>
+          <div class="font-display font-bold text-3xl md:text-4xl text-white">2</div>
+          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Marquee Plants</div>
+        </div>
+        <div>
+          <div class="font-display font-bold text-3xl md:text-4xl text-sky">100%</div>
+          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Handovers Achieved</div>
+        </div>
+        <div>
+          <div class="font-display font-bold text-3xl md:text-4xl text-mint-bright">5+</div>
+          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">PLC/HMI Deployments</div>
+        </div>
+        <div>
+          <div class="font-display font-bold text-3xl md:text-4xl text-alert">0</div>
+          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Safety Incidents</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
+
+    <section id="experience" class="scroll-mt-8 space-y-12">
+      <div
+        class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-navy-brand/10 pb-6 reveal">
+        <div>
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-cloud">Corporate Profile</span>
+          <h2 class="font-display font-bold text-2xl md:text-3xl text-navy-deep mt-1">Key Responsibilities &amp;
+            Delivery</h2>
+        </div>
+        <div
+          class="flex items-center gap-2 bg-cloud/10 text-cloud px-3 py-1.5 rounded-lg text-xs font-mono font-medium">
+          <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Interactive Accordion View
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start reveal">
+        <div class="lg:col-span-7 space-y-4">
+          <div
+            class="bg-white rounded-xl border border-cloud shadow-md shadow-cloud/5 ring-1 ring-cloud/10 transition-all duration-200 overflow-hidden accordion-item"
+            data-accordion="1">
+            <button onclick="toggleAccordion(1)"
+              class="w-full flex items-center justify-between p-5 text-left font-display font-semibold text-sm md:text-base text-navy-deep">
+              <span class="flex items-center gap-3">
+                <span
+                  class="w-7 h-7 rounded-md flex items-center justify-center font-mono text-xs font-bold transition-colors bg-cloud text-white accordion-badge">01</span>
+                System Design &amp; Engineering
+              </span>
+              <i data-lucide="chevron-up" class="w-5 h-5 text-cloud accordion-icon"></i>
+            </button>
+            <div class="accordion-panel px-5 pb-6 border-t border-dashed border-navy-brand/10 pt-4 bg-[#F8FAFC]">
+              <ul class="space-y-3">
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Developed structured PLC/HMI logic (Ladder Diagram, Sequential Function Charts) for automated
+                    skillet, roller, and belt conveyor lines.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Created comprehensive electrical schematics, control cabinet layouts, and I/O allocation
+                    maps.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Formulated technical specifications and safety interlock frameworks according to client conveyor
+                    safety mandates.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl border border-navy-brand/10 hover:border-cloud/50 hover:shadow-sm transition-all duration-200 overflow-hidden accordion-item"
+            data-accordion="2">
+            <button onclick="toggleAccordion(2)"
+              class="w-full flex items-center justify-between p-5 text-left font-display font-semibold text-sm md:text-base text-navy-deep">
+              <span class="flex items-center gap-3">
+                <span
+                  class="w-7 h-7 rounded-md flex items-center justify-center font-mono text-xs font-bold transition-colors bg-cloud/8 text-cloud accordion-badge">02</span>
+                Commissioning &amp; Startup
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-muted accordion-icon"></i>
+            </button>
+            <div class="accordion-panel hidden px-5 pb-6 border-t border-dashed border-navy-brand/10 pt-4 bg-[#F8FAFC]">
+              <ul class="space-y-3">
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Executed full physical commissioning at Asian Paints Visakhapatnam and FIAT assembly
+                    lines.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Managed physical loop-checks, sensor calibrations, variable frequency drive (VFD) tuning, and
+                    motor phase validation.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Coordinated with mechanical technicians to align proximity switches, laser scanners, and
+                    pneumatic lift gates.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl border border-navy-brand/10 hover:border-cloud/50 hover:shadow-sm transition-all duration-200 overflow-hidden accordion-item"
+            data-accordion="3">
+            <button onclick="toggleAccordion(3)"
+              class="w-full flex items-center justify-between p-5 text-left font-display font-semibold text-sm md:text-base text-navy-deep">
+              <span class="flex items-center gap-3">
+                <span
+                  class="w-7 h-7 rounded-md flex items-center justify-center font-mono text-xs font-bold transition-colors bg-cloud/8 text-cloud accordion-badge">03</span>
+                Testing &amp; Validation (FAT / SAT)
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-muted accordion-icon"></i>
+            </button>
+            <div class="accordion-panel hidden px-5 pb-6 border-t border-dashed border-navy-brand/10 pt-4 bg-[#F8FAFC]">
+              <ul class="space-y-3">
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Led Factory Acceptance Testing (FAT) in Pune workshops and Site Acceptance Testing (SAT)
+                    directly on-site with client engineering leads.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Troubleshot transient network issues across Profibus, Profinet, and industrial Ethernet
+                    loops.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Validated system throughput under heavy payload simulations, minimizing conveyor mechanical
+                    stress and system downtime.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl border border-navy-brand/10 hover:border-cloud/50 hover:shadow-sm transition-all duration-200 overflow-hidden accordion-item"
+            data-accordion="4">
+            <button onclick="toggleAccordion(4)"
+              class="w-full flex items-center justify-between p-5 text-left font-display font-semibold text-sm md:text-base text-navy-deep">
+              <span class="flex items-center gap-3">
+                <span
+                  class="w-7 h-7 rounded-md flex items-center justify-center font-mono text-xs font-bold transition-colors bg-cloud/8 text-cloud accordion-badge">04</span>
+                Documentation &amp; Technical Reporting
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-muted accordion-icon"></i>
+            </button>
+            <div class="accordion-panel hidden px-5 pb-6 border-t border-dashed border-navy-brand/10 pt-4 bg-[#F8FAFC]">
+              <ul class="space-y-3">
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Maintained meticulous version-control registries for PLC backups, HMI screens, and sensor
+                    parameter files.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Created operational control narratives, standard operating procedures (SOP), and training
+                    binders for floor technicians.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Compiled official test logs, sign-off reports, and fault matrices for final handover.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl border border-navy-brand/10 hover:border-cloud/50 hover:shadow-sm transition-all duration-200 overflow-hidden accordion-item"
+            data-accordion="5">
+            <button onclick="toggleAccordion(5)"
+              class="w-full flex items-center justify-between p-5 text-left font-display font-semibold text-sm md:text-base text-navy-deep">
+              <span class="flex items-center gap-3">
+                <span
+                  class="w-7 h-7 rounded-md flex items-center justify-center font-mono text-xs font-bold transition-colors bg-cloud/8 text-cloud accordion-badge">05</span>
+                Customer &amp; Site Coordination
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-muted accordion-icon"></i>
+            </button>
+            <div class="accordion-panel hidden px-5 pb-6 border-t border-dashed border-navy-brand/10 pt-4 bg-[#F8FAFC]">
+              <ul class="space-y-3">
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Acted as the direct on-site technical contact, resolving engineering requests and implementing
+                    logic revisions on the fly.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Conducted training seminars for plant managers, control operators, and maintenance teams.</span>
+                </li>
+                <li class="flex gap-2 text-xs md:text-sm text-ink leading-relaxed">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-bright shrink-0 mt-0.5"></i>
+                  <span>Ensured zero-incident handovers adhering strictly to industry safety protocols.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white rounded-2xl border border-navy-brand/10 p-6 shadow-sm">
+            <h3 class="font-display font-bold text-lg text-navy-deep flex items-center gap-2">
+              <i data-lucide="cpu" class="w-5 h-5 text-cloud"></i> Turnkey Operations
+            </h3>
+            <p class="text-xs md:text-sm text-muted mt-3 leading-relaxed">
+              ATS Group delivers highly customized material transport equipment. Our scope includes designing hardware
+              interfaces and control logic that connects massive industrial engines to micro-sensors on safety-critical
+              automotive assembly lines.
+            </p>
+            <div class="mt-4 p-4 rounded-xl bg-navy-deep/5 border border-navy-brand/5 flex items-start gap-3">
+              <i data-lucide="award" class="w-5 h-5 text-cloud shrink-0 mt-0.5"></i>
+              <div>
+                <div class="font-semibold text-xs text-navy-deep">Global Standards Conformity</div>
+                <div class="text-[11px] text-muted mt-1">Engineered controls adhering strictly to ISO 13849 safety
+                  categories and regional electrical rules.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800"
+              alt="ATS Smart Conveying Systems"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+              referrerpolicy="no-referrer">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/50 to-transparent flex flex-col justify-end p-4">
+              <span class="font-mono text-[10px] text-mint-bright uppercase tracking-wider font-semibold">ATS Core
+                Tech</span>
+              <h4 class="font-display font-bold text-sm text-white">Smart Conveying &amp; Materials Transport</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="scroll-mt-8 pt-12 border-t border-navy-brand/10 space-y-12 reveal">
+      <div class="border-b border-navy-brand/10 pb-6">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-cloud">Featured Portfolio
+          Cases</span>
+        <h2 class="font-display font-bold text-2xl md:text-3xl text-navy-deep mt-1">Marquee Industrial Projects</h2>
+        <p class="text-muted text-xs md:text-sm mt-2 max-w-2xl">
+          A closer look at the smart systems successfully engineered, wired, programmed, and hand-delivered on the
+          manufacturing floors.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-white rounded-2xl border border-navy-brand/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="relative h-56 md:h-64 overflow-hidden">
+            <img src="Asian Paints Vizag — Paint Shop Automation.png"
+              alt="Asian Paints Vizag Automation" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+            <div
+              class="absolute top-4 left-4 bg-navy-deep text-white text-[11px] font-mono px-3 py-1 rounded-full font-semibold">
+              PROJECT LOG: PRJ-01
+            </div>
+            <div
+              class="absolute bottom-4 left-4 bg-mint-bright/95 backdrop-blur-sm text-navy-deep text-[11px] font-mono font-bold px-3 py-1 rounded-full flex items-center gap-1">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> Commissioned
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display font-bold text-lg md:text-xl text-navy-deep">
+              Asian Paints Vizag — Paint Shop Automation
+            </h3>
+            <span
+              class="inline-block font-mono text-[11px] font-semibold text-cloud bg-cloud/8 px-2 py-0.5 rounded mt-2">
+              Material Handling &amp; Skid Transport
+            </span>
+
+            <p class="text-xs md:text-sm text-muted mt-4 leading-relaxed">
+              Asian Paints' Visakhapatnam facility is recognized as one of the world's most highly automated smart paint
+              manufacturing plants. Working under ATS, our controls engineering team deployed smart conveying networks
+              that orchestrated container logistics, raw material routing, and automated container baking/drying runs.
+            </p>
+
+            <div class="mt-6 pt-5 border-t border-navy-brand/5 space-y-4">
+              <h4 class="font-display font-bold text-xs uppercase tracking-wider text-navy-deep">Core Engineering
+                Solutions Delivered:</h4>
+              <ul class="space-y-2.5 text-xs text-ink">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cloud mt-1.5 shrink-0"></span>
+                  <span><strong>PLC Automation &amp; Interlocking:</strong> Designed fail-safe Ladder Logic to manage
+                    speed synchronizations between mechanical lifters, paint mixers, and baking conveyor tracks.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cloud mt-1.5 shrink-0"></span>
+                  <span><strong>HMI/SCADA Optimization:</strong> Engineered graphic visualizers on control screens to
+                    give real-time sensory alerts for path blockage, oven temperatures, and batch cycle times.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cloud mt-1.5 shrink-0"></span>
+                  <span><strong>Precision Routing:</strong> Programmed sensor logic arrays to handle automated container
+                    diversion and stacking inside high-speed storage warehouses.</span>
+                </li>
+              </ul>
+            </div>
+
+            <button onclick="openModal('paints')"
+              class="mt-6 w-full py-2.5 bg-gradient-to-r from-cloud to-sky hover:from-navy-deep hover:to-navy-deep text-white rounded-xl text-xs font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-300 flex items-center justify-center gap-1.5">
+              View Engineering Specs <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-2xl border border-navy-brand/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div class="relative h-56 md:h-64 overflow-hidden">
+            <img src="FIAT India — Automotive Assembly Lines.png"
+              alt="FIAT Automotive Ranjangaon Controls" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+            <div
+              class="absolute top-4 left-4 bg-navy-deep text-white text-[11px] font-mono px-3 py-1 rounded-full font-semibold">
+              PROJECT LOG: PRJ-02
+            </div>
+            <div
+              class="absolute bottom-4 left-4 bg-mint-bright/95 backdrop-blur-sm text-navy-deep text-[11px] font-mono font-bold px-3 py-1 rounded-full flex items-center gap-1">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i> Commissioned
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display font-bold text-lg md:text-xl text-navy-deep">
+              FIAT India — Automotive Assembly Lines
+            </h3>
+            <span
+              class="inline-block font-mono text-[11px] font-semibold text-cloud bg-cloud/8 px-2 py-0.5 rounded mt-2">
+              Skillet Systems &amp; Overheads (EMS)
+            </span>
+
+            <p class="text-xs md:text-sm text-muted mt-4 leading-relaxed">
+              At FIAT's world-class Ranjangaon plant, ATS Group installed overhead Electrified Monorail Systems (EMS)
+              and ergonomically adjustable floor skillet systems. These systems transport car chassis through trim shop,
+              paint baking, and BIW welding lines under high-duty cycle demands.
+            </p>
+
+            <div class="mt-6 pt-5 border-t border-navy-brand/5 space-y-4">
+              <h4 class="font-display font-bold text-xs uppercase tracking-wider text-navy-deep">Core Engineering
+                Solutions Delivered:</h4>
+              <ul class="space-y-2.5 text-xs text-ink">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 shrink-0"></span>
+                  <span><strong>Monorail Positioning:</strong> Commissioned laser-guided synchronization loops for
+                    overhead EMS carriers, ensuring high-speed alignment during automatic robotic pick-and-place.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 shrink-0"></span>
+                  <span><strong>Skillet Lift Controls:</strong> Calibrated scissor lift hydraulic logic to allow
+                    operators to adjust vehicle height dynamically based on workstation safety envelopes.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky mt-1.5 shrink-0"></span>
+                  <span><strong>Loop Diagnostics &amp; FAT/SAT:</strong> Handled complex physical signal loop checking,
+                    configured safety light arrays, and executed performance trials.</span>
+                </li>
+              </ul>
+            </div>
+
+            <button onclick="openModal('fiat')"
+              class="mt-6 w-full py-2.5 bg-gradient-to-r from-cloud to-sky hover:from-navy-deep hover:to-navy-deep text-white rounded-xl text-xs font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-300 flex items-center justify-center gap-1.5">
+              View Engineering Specs <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="scroll-mt-8 pt-12 border-t border-navy-brand/10 space-y-12 reveal">
+      <div class="border-b border-navy-brand/10 pb-6">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-cloud">Technical Toolbox</span>
+        <h2 class="font-display font-bold text-2xl md:text-3xl text-navy-deep mt-1">Skills &amp; Competencies</h2>
+        <p class="text-muted text-xs md:text-sm mt-2 max-w-2xl">
+          A map of engineering domains, hardware networks, and soft coordination assets developed on industrial
+          automation floors.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl border border-navy-brand/10 p-6 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-cloud/10 flex items-center justify-center text-cloud mb-4">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-base text-navy-deep">PLC &amp; Control Engineering</h3>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">
+            Solid groundwork in writing sequential routines, device logic interlocks, and sensor mappings.
+          </p>
+          <div class="mt-5 space-y-2">
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-cloud"></span>
+              <span>Ladder Diagram (LD)</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-cloud"></span>
+              <span>Sequential Function Charts (SFC)</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-cloud"></span>
+              <span>Analog &amp; Digital Loop Checks</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-cloud"></span>
+              <span>VFD &amp; Servo Motor Tuning</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-cloud"></span>
+              <span>Safety Interlock Circuits</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-navy-brand/10 p-6 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-mint-bright/10 flex items-center justify-center text-mint-pass mb-4">
+            <i data-lucide="terminal" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-base text-navy-deep">Industrial Protocols</h3>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">
+            Configuring robust real-time communication rings across dense factory floor layouts.
+          </p>
+          <div class="mt-5 space-y-2">
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-bright"></span>
+              <span>PROFINET RT / Ring Topology</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-bright"></span>
+              <span>PROFIBUS DP Master/Slave</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-bright"></span>
+              <span>EtherNet/IP Networks</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-bright"></span>
+              <span>RS-485 Serial Communication</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-mint-bright"></span>
+              <span>Remote I/O Drop Stations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-navy-brand/10 p-6 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-alert/10 flex items-center justify-center text-alert mb-4">
+            <i data-lucide="wrench" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-base text-navy-deep">Platforms &amp; Hardware</h3>
+          <p class="text-xs text-muted mt-1.5 leading-relaxed">
+            Deployment and systems integration experience on industry-standard engineering software.
+          </p>
+          <div class="mt-5 space-y-2">
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-alert"></span>
+              <span>Siemens TIA Portal &amp; STEP 7</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-alert"></span>
+              <span>Rockwell RSLogix / Studio 5000</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-alert"></span>
+              <span>WinCC SCADA &amp; Panel Designers</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-alert"></span>
+              <span>FactoryTalk View HMI Platform</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-ink">
+              <span class="w-1.5 h-1.5 rounded-full bg-alert"></span>
+              <span>EPLAN / Electrical Cabinet Layouts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="scroll-mt-8 pt-12 border-t border-navy-brand/10 space-y-12 reveal">
+      <div class="border-b border-navy-brand/10 pb-6">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-cloud">Profile Journey</span>
+        <h2 class="font-display font-bold text-2xl md:text-3xl text-navy-deep mt-1">About Praful Bhanarkar</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-8 space-y-6">
+          <h3 class="font-display font-bold text-lg md:text-xl text-navy-deep">
+            From Physical Logic Gates to Digital Enterprise Platforms
+          </h3>
+          <p class="text-xs md:text-sm text-ink leading-relaxed">
+            As a Control Engineer with ATS Group, I spent a year looking at automation logic, testing sensor relays, and
+            verifying electrical signal flows under intense shop-floor constraints. Industrial plants at Asian Paints
+            and FIAT don't just run software — they depend on physical-cyber systems where any logic bug could translate
+            into physical collisions. That environment taught me the extreme value of <strong>structured validation,
+              rigorous edge-case testing, and defensive engineering</strong>.
+          </p>
+          <p class="text-xs md:text-sm text-ink leading-relaxed">
+            Today, I am applying this robust analytical testing approach to modern IT platforms and cloud architectures.
+            I have focused heavily on the <strong>Salesforce ecosystem</strong>, earning my path as a Salesforce
+            enthusiast and Trailhead explorer.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+            <div class="p-4 rounded-xl bg-white border border-navy-brand/10">
+              <h4
+                class="font-display font-bold text-xs text-navy-deep uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="award" class="w-4 h-4 text-cloud"></i> Testing Mindset
+              </h4>
+              <p class="text-[11px] text-muted mt-2">
+                Accustomed to defining strict validation procedures, test plans, and fault-tolerance boundaries during
+                complex Site Acceptance Tests.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-navy-brand/10">
+              <h4
+                class="font-display font-bold text-xs text-navy-deep uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="book-open" class="w-4 h-4 text-cloud"></i> Constant Learner
+              </h4>
+              <p class="text-[11px] text-muted mt-2">
+                Actively progressing on the Salesforce Trailhead platform, mastering Admin modules, QA validation
+                schemas, and declarative automation rules.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 space-y-6">
+          <div
+            class="bg-gradient-to-br from-navy-deep to-cloud text-white rounded-2xl p-6 shadow-md relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-mint-bright/10 rounded-full blur-xl pointer-events-none">
+            </div>
+            <span class="font-mono text-[9px] text-mint-bright tracking-widest uppercase font-semibold">Active
+              Objective</span>
+            <h4 class="font-display font-bold text-sm text-white mt-1">Salesforce QA &amp; testing</h4>
+            <p class="text-[11px] text-[#D1D9E0] mt-3 leading-relaxed">
+              Eager to bring mechanical-grade precision and strict quality standards to enterprise cloud software
+              delivery teams.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="text-[10px] font-mono bg-white/10 px-2 py-1 rounded font-medium">Salesforce QA</span>
+              <span class="text-[10px] font-mono bg-white/10 px-2 py-1 rounded font-medium">System Testing</span>
+              <span class="text-[10px] font-mono bg-white/10 px-2 py-1 rounded font-medium">Manual Testing</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-navy-brand/10 p-6 space-y-4">
+            <h4 class="font-display font-bold text-xs uppercase tracking-wider text-navy-deep">Education &amp;
+              Credentials</h4>
+            <div class="space-y-3">
+              <div class="border-l-2 border-cloud pl-3">
+                <div class="text-xs font-bold text-navy-deep">Bachelor of Engineering</div>
+                <div class="text-[11px] text-muted mt-0.5">Control, Automation &amp; Instrumentation Foundations</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="project-modal"
+    class="fixed inset-0 bg-navy-deep/75 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+    <div
+      class="bg-white rounded-2xl max-w-2xl w-full p-6 relative max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20">
+      <button onclick="closeModal()"
+        class="absolute top-4 right-4 bg-paper hover:bg-cloud/10 text-muted hover:text-cloud w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors">
+        ✕
+      </button>
+
+      <div id="modal-paints" class="hidden space-y-6">
+        <div class="flex items-center gap-2 text-xs font-mono font-bold text-cloud">
+          <i data-lucide="terminal" class="w-4 h-4"></i> CORE SPECIFICATIONS SHEET: PRJ-01
+        </div>
+        <h3 class="font-display font-bold text-xl md:text-2xl text-navy-deep mt-2">
+          Asian Paints Vizag — Control Specs
+        </h3>
+
+        <div class="p-4 rounded-xl bg-paper border border-navy-brand/5 space-y-3 font-mono text-xs text-ink">
+          <div><strong class="text-cloud">PLC System:</strong> Siemens SIMATIC S7-1500 Fail-safe CPU</div>
+          <div><strong class="text-cloud">HMI Environment:</strong> WinCC SCADA Advanced / Unified Panels</div>
+          <div><strong class="text-cloud">Industrial Networks:</strong> PROFINET RT (Real-Time) ring topology for high
+            reliability</div>
+          <div><strong class="text-cloud">VFD Architecture:</strong> SEW Eurodrive Movidrive frequency inverters</div>
+          <div><strong class="text-cloud">Actuator / Sensor:</strong> Sick Laser Scanners, Pepperl+Fuchs photoelectric
+            grids</div>
+        </div>
+
+        <div class="space-y-3 text-xs md:text-sm text-ink leading-relaxed">
+          <p>
+            <strong>The Engineering Challenge:</strong> In a paint production environment, conveyor operations have zero
+            margin for error. A sudden stop can lead to chemical settling or paint curing failures inside curing ovens.
+          </p>
+          <p>
+            <strong>Delivered Solution:</strong> We created localized conveyor segment overrides. In the event of a
+            downstream line blockage, upstream skillet conveyors automatically switch to a low-speed accumulator mode.
+            This keeps the active paint ovens moving while safely slowing the production lines, avoiding oven baking
+            errors and saving thousands in potential material waste.
+          </p>
+        </div>
+      </div>
+
+      <div id="modal-fiat" class="hidden space-y-6">
+        <div class="flex items-center gap-2 text-xs font-mono font-bold text-cloud">
+          <i data-lucide="terminal" class="w-4 h-4"></i> CORE SPECIFICATIONS SHEET: PRJ-02
+        </div>
+        <h3 class="font-display font-bold text-xl md:text-2xl text-navy-deep mt-2">
+          FIAT Ranjangaon — Control Specs
+        </h3>
+
+        <div class="p-4 rounded-xl bg-paper border border-navy-brand/5 space-y-3 font-mono text-xs text-ink">
+          <div><strong class="text-cloud">PLC System:</strong> Rockwell Automation ControlLogix 5580</div>
+          <div><strong class="text-cloud">Fieldbus Protocol:</strong> Profibus DP and EtherNet/IP Industrial Loop</div>
+          <div><strong class="text-cloud">Safety Class:</strong> SIL 3 / PL e (ISO 13849-1) functional safety loops
+          </div>
+          <div><strong class="text-cloud">Skillet Elevators:</strong> Demag vertical hoist scissor lifts with resolver
+            feedback</div>
+          <div><strong class="text-cloud">EMS Carriers:</strong> Dual-drive monorail trolley with localized safety
+            blocks</div>
+        </div>
+
+        <div class="space-y-3 text-xs md:text-sm text-ink leading-relaxed">
+          <p>
+            <strong>The Engineering Challenge:</strong> Automotive trim lines require variable conveyor spacing and
+            heights. To ensure workers can safely and ergonomically mount engines, doors, and interiors, skillet
+            conveyances must raise and lower car bodies smoothly while in motion.
+          </p>
+          <p>
+            <strong>Delivered Solution:</strong> Commissioned laser-range distance meters on scissors lifts. Built
+            synchronized speed profile blocks inside the PLC logic, guaranteeing that even when a vehicle is moving at
+            full line speed, the vertical adjustment occurs perfectly level without sway. Configured safety light
+            screens at all pinch points, stopping operations instantly if an operator crosses the barrier envelope.
+          </p>
+        </div>
+      </div>
+
+      <button onclick="closeModal()"
+        class="mt-6 w-full py-2.5 bg-navy-deep text-white rounded-xl text-xs font-semibold hover:bg-cloud transition-colors">
+        Close Specs Screen
+      </button>
+    </div>
+  </div>
+
+  <section class="bg-white border-t border-navy-brand/10 py-20 px-6" id="contact">
+    <div class="max-w-4xl mx-auto text-center space-y-6 reveal">
+      <div
+        class="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-widest text-cloud bg-cloud/8 px-3 py-1.5 rounded-full">
+        GET IN TOUCH
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-navy-deep">
+        Let's ship your next release without the defects.
+      </h2>
+      <p class="text-muted text-xs md:text-sm max-w-xl mx-auto leading-relaxed">
+        Based in Nagpur, Maharashtra. Open to Salesforce QA, systems validation, manual testing, or control systems
+        consulting roles globally or remote.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 md:gap-4 pt-4">
+        <a href="mailto:prafulbhanarkar200@gmail.com"
+          class="bg-navy-deep hover:bg-cloud text-white px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-2">
+          <i data-lucide="mail" class="w-4 h-4 text-mint-bright"></i> prafulbhanarkar200@gmail.com
+        </a>
+        <a href="tel:9545148501"
+          class="border border-navy-brand/10 hover:border-navy-deep text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-navy-deep/5 transition-all duration-200 flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4 text-cloud"></i> +91 9545148501
+        </a>
+        <a href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank" rel="noopener noreferrer"
+          class="border border-navy-brand/10 hover:border-cloud text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-cloud/5 transition-all duration-200 flex items-center gap-2">
+          <i data-lucide="linkedin" class="w-4 h-4 text-sky"></i> LinkedIn Profile
+        </a>
+        <a href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank" rel="noopener noreferrer"
+          class="border border-navy-brand/10 hover:border-alert text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-alert/5 transition-all duration-200 flex items-center gap-2">
+          <i data-lucide="award" class="w-4 h-4 text-alert"></i> Trailblazer Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white border-t border-navy-brand/10 py-8 text-center text-xs text-muted">
+    <div class="max-w-4xl mx-auto px-6 space-y-2">
+      <div>© 2026 Praful Bhanarkar · Control Engineer &amp; Tech Professional</div>
+      <div class="font-mono text-[10px] text-[#A0B0C0] tracking-wider uppercase">
+        Validating the Code · Securing the Cloud · Empowering the Users
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide vector icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+
+      // Initial trigger of scroll animations
+      scrollReveal();
+    });
+
+    /**
+     * Toggles visibility of individual items inside the Experience accordion panel
+     */
+    function toggleAccordion(id) {
+      const allItems = document.querySelectorAll('.accordion-item');
+      allItems.forEach(item => {
+        const itemIndex = parseInt(item.getAttribute('data-accordion'));
+        const panel = item.querySelector('.accordion-panel');
+        const icon = item.querySelector('.accordion-icon');
+        const badge = item.querySelector('.accordion-badge');
+
+        if (itemIndex === id) {
+          if (panel.classList.contains('hidden')) {
+            panel.classList.remove('hidden');
+            item.classList.add('border-cloud', 'shadow-md', 'shadow-cloud/5', 'ring-1', 'ring-cloud/10');
+            item.classList.remove('border-navy-brand/10');
+            icon.setAttribute('data-lucide', 'chevron-up');
+            badge.classList.add('bg-cloud', 'text-white');
+            badge.classList.remove('bg-cloud/8', 'text-cloud');
+          } else {
+            panel.classList.add('hidden');
+            item.classList.remove('border-cloud', 'shadow-md', 'shadow-cloud/5', 'ring-1', 'ring-cloud/10');
+            item.classList.add('border-navy-brand/10');
+            icon.setAttribute('data-lucide', 'chevron-down');
+            badge.classList.remove('bg-cloud', 'text-white');
+            badge.classList.add('bg-cloud/8', 'text-cloud');
+          }
+        } else {
+          // Keep all other panels collapsed
+          panel.classList.add('hidden');
+          item.classList.remove('border-cloud', 'shadow-md', 'shadow-cloud/5', 'ring-1', 'ring-cloud/10');
+          item.classList.add('border-navy-brand/10');
+          icon.setAttribute('data-lucide', 'chevron-down');
+          badge.classList.remove('bg-cloud', 'text-white');
+          badge.classList.add('bg-cloud/8', 'text-cloud');
+        }
+      });
+      // Refresh icon elements transformed by Lucide
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+
+    /**
+     * Launches the Specs modal overlay and displays target control specifications
+     */
+    function openModal(projectId) {
+      const modal = document.getElementById('project-modal');
+      const paintsContent = document.getElementById('modal-paints');
+      const fiatContent = document.getElementById('modal-fiat');
+
+      if (!modal) return;
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+
+      if (projectId === 'paints') {
+        if (paintsContent) paintsContent.classList.remove('hidden');
+        if (fiatContent) fiatContent.classList.add('hidden');
+      } else {
+        if (fiatContent) fiatContent.classList.remove('hidden');
+        if (paintsContent) paintsContent.classList.add('hidden');
+      }
+    }
+
+    /**
+     * Closes the Specs modal overlay
+     */
+    function closeModal() {
+      const modal = document.getElementById('project-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Modal Keyboard and Click-outside Accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    const modalOverlay = document.getElementById('project-modal');
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+    }
+
+    /**
+     * Evaluates DOM elements with .reveal classes and triggers entry animations on scroll
+     */
+    const scrollReveal = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach(reveal => {
+        const revealTop = reveal.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (revealTop < windowHeight - revealPoint) {
+          reveal.classList.add('active');
+        }
+      });
+    }
+
+    // Optimized scroll & resize listening for animations
+    window.addEventListener('scroll', scrollReveal);
+    window.addEventListener('resize', scrollReveal);
+  </script>
+</body>
+
+</html>

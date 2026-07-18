@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praful Bhanarkar — Salesforce Quality Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #051937;
+      --navy: #0B2545;
+      --cloud-blue: #0176D3;
+      --sky-blue: #1B96FF;
+      --mint-pass: #04844B;
+      --mint-bright: #2ECC8F;
+      --alert-orange: #FF6B35;
+      --paper: #F4F7FB;
+      --white: #FFFFFF;
+      --ink: #16325C;
+      --muted: #5A7184;
+      --line: rgba(11, 37, 69, 0.10);
+      --shadow: 0 20px 50px -20px rgba(5, 25, 55, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      color: var(--navy-deep);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    ::selection {
+      background: var(--sky-blue);
+      color: #fff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ---------- Layout shells ---------- */
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      position: relative;
+      padding: 112px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cloud-blue);
+      background: rgba(1, 118, 211, 0.08);
+      border: 1px solid rgba(1, 118, 211, 0.18);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+      box-shadow: 0 0 0 3px rgba(46, 204, 143, 0.25);
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.6;
+    }
+
+    /* reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(244, 247, 251, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy-deep);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cloud-blue), var(--sky-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .navlinks a {
+      transition: color .2s;
+    }
+
+    .navlinks a:hover {
+      color: var(--cloud-blue);
+    }
+
+    .nav-cta {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--cloud-blue);
+      transform: translateY(-1px);
+    }
+
+    @media(max-width:760px) {
+      .navlinks {
+        display: none;
+      }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 168px 0 100px;
+      background:
+        radial-gradient(1200px 500px at 15% -10%, rgba(1, 118, 211, 0.14), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(46, 204, 143, 0.10), transparent 60%),
+        var(--navy-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media(max-width:900px) {
+      .hero .wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-cloud {
+      position: absolute;
+      opacity: 0.55;
+      filter: blur(0.3px);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    .kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--mint-bright);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kicker::before {
+      content: '';
+      width: 26px;
+      height: 1px;
+      background: var(--mint-bright);
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.6vw, 54px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: #fff;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(90deg, var(--sky-blue), var(--mint-bright));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      margin-top: 22px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 14.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--cloud-blue), var(--sky-blue));
+      color: #fff;
+      box-shadow: 0 12px 30px -10px rgba(27, 150, 255, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px -8px rgba(27, 150, 255, 0.7);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #fff;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      margin-top: 48px;
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .stat span {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- Hero illustration + console ---------- */
+    .hero-visual {
+      position: relative;
+    }
+
+    .illustration {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .console {
+      margin-top: 22px;
+      background: rgba(5, 15, 35, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 18px 20px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+    }
+
+    .console-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .console-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .console-dots span:nth-child(1) {
+      background: #FF6B6B;
+    }
+
+    .console-dots span:nth-child(2) {
+      background: #FFD166;
+    }
+
+    .console-dots span:nth-child(3) {
+      background: #2ECC8F;
+    }
+
+    .console-body {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #B9D4F5;
+      min-height: 130px;
+    }
+
+    .console-line {
+      opacity: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .console-line .ok {
+      color: var(--mint-bright);
+      font-weight: 600;
+    }
+
+    .console-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 14px;
+      background: var(--mint-bright);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Summary ---------- */
+
+    .summary {
+      background: var(--white);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 56px;
+    }
+
+    @media(max-width:860px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .summary p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+
+    .summary p+p {
+      margin-top: 16px;
+    }
+
+    .badge-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px;
+      width: 570px;
+      height: fit-content;
+    }
+
+    .badge-panel h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* Award card: image + caption on top, content stacked below — whole panel sits in the right column of .summary-grid */
+    .award-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .award-media {
+      width: 100%;
+      text-align: center;
+    }
+
+    .award-media img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .award-caption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .award-content {
+      width: 100%;
+    }
+
+    .award-card h5 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 4px;
+    }
+
+    .award-card .award-content p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.55;
+    }
+
+
+    /* ---------- Certifications ---------- */
+    .certs {
+      background: var(--paper);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media(max-width:760px) {
+      .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:480px) {
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(1, 118, 211, 0.06), transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: rgba(1, 118, 211, 0.25);
+    }
+
+    .cert-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Styles for the new logo image */
+    .cert-logo {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .cert-logo-copado-ai {
+      width: 110px;
+      height: auto;
+      max-height: 90px;
+      object-fit: contain;
+      margin-left: -28px;
+    }
+
+    .cert-card h5 {
+      font-size: 15.5px;
+      font-weight: 700;
+    }
+
+    .cert-card span {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Keeps check icon aligned cleanly alongside the image */
+    .cert-check {
+      margin-left: auto;
+      width: 20px;
+      height: 20px;
+      color: var(--mint-pass);
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all .3s;
+      align-self: center;
+    }
+
+    .cert-card:hover .cert-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .cert-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    /* ---------- Skills ---------- */
+    .skills {
+      background: var(--white);
+    }
+
+    .skill-cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @media(max-width:760px) {
+      .skill-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-group {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .skill-group h4 {
+      font-size: 14px;
+      color: var(--cloud-blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-group h4::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--cloud-blue);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 9px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      transition: all .2s;
+    }
+
+    .tag:hover {
+      background: var(--navy-deep);
+      color: #fff;
+      transform: translateY(-2px);
+      border-color: var(--navy-deep);
+    }
+
+    /* ---------- Experience (test-log timeline) ---------- */
+    .experience {
+      background: var(--navy-deep);
+      color: #fff;
+    }
+
+    .experience .section-head p {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .experience .eyebrow {
+      background: rgba(46, 204, 143, 0.12);
+      border-color: rgba(46, 204, 143, 0.3);
+      color: var(--mint-bright);
+    }
+
+    .experience .eyebrow::before {
+      background: var(--sky-blue);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--mint-bright), rgba(255, 255, 255, 0.08));
+    }
+
+    .test-case {
+      position: relative;
+      margin-bottom: 36px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 26px 26px 22px;
+      transition: background .25s, border-color .25s;
+    }
+
+    .test-case:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(46, 204, 143, 0.35);
+    }
+
+    .test-case::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 30px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+      box-shadow: 0 0 0 5px rgba(46, 204, 143, 0.18);
+    }
+
+    .tc-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .tc-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--mint-bright);
+      background: rgba(46, 204, 143, 0.12);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .tc-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint-bright);
+      border: 1px solid rgba(46, 204, 143, 0.4);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .tc-role {
+      font-size: 19px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .tc-meta {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 2px;
+      margin-bottom: 14px;
+    }
+
+    .tc-desc {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .tc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tc-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+    }
+
+    .tc-list li svg {
+      flex: none;
+      margin-top: 3px;
+    }
+
+    /* ---------- Education / Contact ---------- */
+    .footer-cta {
+      background: var(--paper);
+      text-align: center;
+      padding: 120px 0 60px;
+    }
+
+    .footer-cta h2 {
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .footer-cta p {
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 16.5px;
+    }
+
+    .footer-actions {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      background: var(--navy-deep);
+      color: #fff;
+    }
+
+    .btn-dark:hover {
+      background: var(--cloud-blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy-deep);
+      color: #fff;
+      border-color: var(--navy-deep);
+      transform: translateY(-2px);
+    }
+
+    .edu-line {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer.bottom {
+      padding: 28px 0;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="brand"><span class="brand-mark">PB</span> Praful Bhanarkar</div>
+      <div class="navlinks">
+        <a href="#summary">Summary</a>
+        <a href="#certs">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:prafulbhanarkar200@gmail.com">Hire me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <svg class="hero-cloud" style="top:70px; left:-40px; width:180px;" viewBox="0 0 200 120" fill="none">
+      <path
+        d="M40 90c-16 0-28-12-28-27 0-14 11-26 25-27 5-15 19-26 36-26 19 0 35 14 38 32 14 2 25 13 25 27 0 15-13 27-29 27H40z"
+        fill="#1B96FF" opacity="0.25" />
+    </svg>
+    <svg class="hero-cloud" style="top:340px; right:-30px; width:220px; animation-delay:2s;" viewBox="0 0 200 120"
+      fill="none">
+      <path
+        d="M40 90c-16 0-28-12-28-27 0-14 11-26 25-27 5-15 19-26 36-26 19 0 35 14 38 32 14 2 25 13 25 27 0 15-13 27-29 27H40z"
+        fill="#2ECC8F" opacity="0.18" />
+    </svg>
+
+    <div class="wrap">
+      <div class="hero-content">
+        <div class="kicker">Salesforce Quality Analyst · 4+ yrs</div>
+        <h1>Catching bugs before they<br> reach <span class="accent">production.</span></h1>
+        <p class="hero-sub">I test Salesforce implementations end-to-end — Sales, Service &amp; Marketing Cloud,
+          OmniScripts, DataRaptors and Flows — so releases ship clean, on time, and defect-free.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:prafulbhanarkar200@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16v16H4z" />
+              <path d="M4 6l8 7 8-7" />
+            </svg>
+            Email me
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank"
+            rel="noopener">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank"
+            rel="noopener">Trailhead ↗</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat"><b>4+</b><span>Years Experience</span></div>
+          <div class="stat"><b>48+</b><span>Projects Tested</span></div>
+          <div class="stat"><b>5</b><span>SF Certifications</span></div>
+          <div class="stat"><b>2</b><span>Copado Certifications</span></div>
+          <div class="stat"><b>5</b><span>Devops Launchpad Certifications</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- <svg class="illustration" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg"> -->
+        <video width="100%" height="100%" autoplay loop muted playsinline style="object-fit: cover;">
+          <source src="Portfolio Video Clip.mp4" type="video/mp4" />
+        </video>
+        <!-- desk -->
+        <rect x="60" y="300" width="360" height="14" rx="4" fill="#0B2545" />
+        <rect x="90" y="314" width="16" height="60" fill="#0B2545" />
+        <rect x="370" y="314" width="16" height="60" fill="#0B2545" />
+        <!-- chair -->
+        <path d="M340 250 q30 10 26 60" stroke="#1B96FF" stroke-width="8" fill="none" stroke-linecap="round"
+          opacity="0.5" />
+
+        </svg>
+
+        <div class="console">
+          <div class="console-dots"><span></span><span></span><span></span></div>
+          <div class="console-body" id="consoleBody"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SUMMARY ===================== -->
+
+  <section class="summary" id="summary">
+    <div class="wrap">
+      <div class="summary-grid">
+
+        <div class="reveal">
+          <div class="eyebrow">Professional Summary</div>
+          <h2 style="font-size:clamp(24px,3vw,32px); margin-bottom:18px;">Quality-first, Salesforce-native.</h2>
+          <p>Results-driven Salesforce Quality Analyst with 4+ years of experience delivering end-to-end QA solutions
+            for complex Salesforce implementations across Sales, Service, and Marketing Clouds. Skilled in Salesforce
+            administration, configuration validation, functional testing, regression testing, integration testing, API
+            testing, and automation testing to ensure reliable and scalable business solutions.</p>
+          <p>Successfully tested and supported 48+ Salesforce projects, collaborating with cross-functional teams to
+            deliver high-quality releases and optimize CRM processes. Experienced with Salesforce platforms, Copado
+            DevOps practices, Playwright, BrowserStack, Postman, and Agile tools. Backed by 9 active certifications
+            across Salesforce, Copado, and DevOps Launchpad, demonstrating a strong commitment to quality engineering,
+            continuous improvement, and technology-driven solutions.</p>
+        </div>
+
+        <div class="reveal badge-panel">
+          <div class="eyebrow">Recognition</div>
+          <div class="award-card">
+
+            <!-- Image on top -->
+            <div class="award-media">
+              <img src="1727747839991.JPG" alt="Receiving Award from CEO">
+              <p class="award-caption">Receiving the award from our CEO</p>
+            </div>
+
+            <!-- Content below the image + caption -->
+            <div class="award-content">
+              <h5>"Timely Titan" Award</h5>
+              <p>Awarded for exceptional time management, ownership, and consistent delivery of quality outcomes across
+                Salesforce projects. Recognized for completing testing activities within deadlines, maintaining high
+                accuracy, and contributing to smooth project releases through proactive collaboration and
+                problem-solving.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CERTIFICATIONS ===================== -->
+  <section class="certs" id="certs">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Certifications</div>
+        <h2>Credentials that back the testing.</h2>
+        <p>Six active certifications spanning admin, development, AI and automation on the Salesforce platform.</p>
+      </div>
+
+      <div class="cert-grid">
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://developer.salesforce.com/resources2/certification-site/images/Certifications-logo/Advanced-Administrator.png"
+              alt="Salesforce Certified Administrator Logo" class="cert-logo" />
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h5>Salesforce Certified Administrator</h5>
+          <span>VERIFIED · SALESFORCE · Credential ID 22636411</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://developer.salesforce.com/resources2/certification-site/images/Certifications-logo/Platform-Developer-I.png"
+              alt="Salesforce Platform Developer I" class="cert-logo" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h5>Salesforce Platform Developer I</h5>
+          <span>VERIFIED · SALESFORCE · Credential ID 2327329</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://developer.salesforce.com/resources2/certification-site/images/Certifications-logo/2026-01_Badge_SF-Certified_D360-Con_High-Res.png"
+              alt="Salesforce Certified Data Cloud Consultant" class="cert-logo" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h5>Salesforce Certified Data Cloud Consultant</h5>
+          <span>VERIFIED · SALESFORCE · Credential ID 4693375</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://developer.salesforce.com/resources2/certification-site/images/Certifications-logo/ai-associate.png?v=2"
+              alt="Salesforce Certified AI Associate" class="cert-logo" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+
+          <h5>Salesforce Certified AI Associate</h5>
+          <span>VERIFIED · SALESFORCE · Credential ID 4958884</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://media.licdn.com/dms/image/sync/v2/D5627AQFpVod8J7jFaA/articleshare-shrink_800/B4EZ5w3tBpGwAQ-/0/1780010113117?e=2147483647&v=beta&t=N6RIOJsYUtuwRUp9wAVr9F2TQaEz2A6zE4bv4_AX2NM"
+              alt="Copado AI Certification" class="cert-logo cert-logo-copado-ai" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+
+          <h5>Copado AI</h5>
+          <span>VERIFIED · COPADO · Credential ID 064049</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://cdn.prod.website-files.com/62d8507d84c54d359ad063bc/662b1bcf55950e4333f16640_Copado%20Certified%20Badges%20FY24_Robotic%20Testing%20(2).webp"
+              alt="Copado Robotic Testing Certification" class="cert-logo" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+
+          <h5>Copado Robotic Testing</h5>
+          <span>VERIFIED · COPADO · Credential ID 068097</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img
+              src="https://developer.salesforce.com/resources2/certification-site/images/Certifications-logo/2025-02_Badge_SF-Certified_Agentforce-Specialist_High-Res.png"
+              alt="Salesforce Certified Agentforce Specialist" class="cert-logo" />
+
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+
+          <h5>Salesforce Certified Agentforce Specialist</h5>
+          <span>VERIFIED · SALESFORCE · Credential ID 4998263</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img src="https://devopslaunchpad.com/images/badge.svg?v=1" class="cert-logo" />
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h5>Salesforce CPQ</h5>
+          <span>VERIFIED · Devops Launchpad · Credential ID 01783077</span>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-top">
+            <img src="https://devopslaunchpad.com/images/badge.svg?v=1" class="cert-logo" />
+            <svg class="cert-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h5>Salesforce Testing and Test Automation</h5>
+          <span>VERIFIED · Devops Launchpad · Credential ID 01783077</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Technical Skills</div>
+        <h2>The QA toolkit.</h2>
+        <p>Platforms, testing types, configuration coverage and tooling used day to day.</p>
+      </div>
+      <div class="skill-cols">
+        <div class="skill-group reveal">
+          <h4>Salesforce Platforms &amp; Tools</h4>
+          <div class="tag-row">
+            <span class="tag">Salesforce Classic</span><span class="tag">Salesforce Lightning</span><span
+              class="tag">Salesforce Configuration</span><span class="tag">Custom Objects & Fields</span><span
+              class="tag">Workflows</span><span class="tag">Process Builder & Flows</span><span class="tag">Validation
+              Rules</span><span class="tag">Apex Triggers</span><span class="tag">Reports & Dashboards</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Testing Types</h4>
+          <div class="tag-row">
+            <span class="tag">Functional Testing</span><span class="tag">Regression Testing</span><span
+              class="tag">Integration Testing</span><span class="tag">UI Testing</span><span class="tag">Security
+              Testing</span><span class="tag">Performance Testing</span><span class="tag">UAT Testing</span><span
+              class="tag">System Testing</span><span class="tag">Load Testing</span><span class="tag">Smoke
+              Testing</span><span class="tag">Sanity Testing</span><span class="tag">Salesforce Configuration
+              Testing</span><span class="tag">Defect Reporting & Integration</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Testing & Automation Tools</h4>
+          <div class="tag-row">
+            <span class="tag">BrowserStack</span><span class="tag">Playwright</span><span class="tag">Postman (API
+              Testing)</span><span class="tag">Jira Defect Tracking</span><span class="tag">VS Code</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h4>Collaboration & Project Management Tools</h4>
+          <div class="tag-row">
+            <span class="tag">Slack</span><span class="tag">Microsoft Teams</span><span class="tag">Asana</span><span
+              class="tag">Jira</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section class="experience" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">EXPERIENCE Log</div>
+        <h2>Experience</h2>
+        <p>Five roles, one thread — end-to-end quality ownership across Salesforce implementations.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-004</span>
+            <span class="tc-status">● Present</span>
+          </div>
+          <div class="tc-role">Salesforce Quality Analyst — Synaptic</div>
+          <div class="tc-meta">DDWA Project · Feb 2025 – Present</div>
+          <div class="tc-desc">Worked on the DDWA Salesforce implementation project focusing on validating data
+            workflows, automation, and integrations.</div>
+          <ul class="tc-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Performed functional and regression testing of Salesforce objects, page layouts, and validation
+              rules to ensure system stability and data integrity.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Executed end-to-end testing of OmniScripts, DataRaptors, and automation flows, identifying defects
+              and collaborating with developers for resolution.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Conducted UAT testing with business users, validating real-time scenarios like Payment Information,
+              Account–Legal Entity mapping, and workflow approvals.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Created detailed test cases, defect reports, and success messages following best QA practices for
+              transparency and traceability.</li>
+          </ul>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-003</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-role">Sr. Quality Analyst — Makedian Softech Solutions Pvt. Ltd.</div>
+          <div class="tc-meta">September 2024 – January 2025</div>
+          <div class="tc-desc">Senior QA for a global organization, testing 48+ projects across India and international
+            locations.</div>
+          <ul class="tc-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Managed comprehensive test strategies and test cases, driving coverage across functional and
+              non-functional requirements.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Worked closely with developers and project managers to design and execute thorough test cases
+              ensuring seamless integration.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Mentored and guided junior QA team members through feedback, training and support.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Continuously evaluated and recommended improvements to testing methodology and project outcomes.
+            </li>
+          </ul>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-002</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-role">Jr. Quality Analyst — Makedian Softech Solutions Pvt. Ltd.</div>
+          <div class="tc-meta">October 2022 – September 2024</div>
+          <div class="tc-desc">Supported 35+ Salesforce projects for domestic and international clients across Sales,
+            Service and Marketing Cloud.</div>
+          <ul class="tc-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Conducted thorough functional and regression testing aligned to business and technical requirements.
+            </li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Assisted in creating and maintaining detailed test plans, cases, and scripts across Salesforce
+              modules.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Performed manual testing, identified defects and collaborated with developers to resolve issues.
+            </li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Ensured configurations, workflows and automations were production-ready, flagging risks proactively.
+            </li>
+          </ul>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-001</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          
+          <a href="ControlEngineer_ATS Groups.html" class="tc-role-link">
+            <div class="tc-role">Engineer Controls — ATS Conveyors India Pvt. Ltd.</div>
+          </a>
+          <div class="tc-meta">November 2021 – June 2022</div>
+          <div class="tc-desc">Contributed to automation projects for leading automotive manufacturing plants by
+            developing PLC and HMI solutions, optimizing conveyor and robotic systems, and supporting plant
+            commissioning and maintenance activities.</div>
+          <ul class="tc-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Developed and modified PLC logic and HMI interfaces for FIAT Ranjangaon Paint Shop automation.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Implemented programming modifications for conveyor lines, robotic systems, and EMS pallet transport
+              units at Aisan Paint Plant, Vizag.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Improved automation system performance by enhancing conveyor response time, operational speed, and
+              process reliability.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Collaborated with electrical and mechanical maintenance teams to validate system functionality,
+              troubleshoot issues, and support successful commissioning.</li>
+          </ul>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          
+          <a href="JrControlEngineer_Alligator.html" class="tc-role-link">
+            <div class="tc-role">Jr. Control Engineer — Alligator Automations</div>
+          </a>
+          <div class="tc-meta">June 2018 – November 2021</div>
+          <div class="tc-desc">Designed, programmed, and commissioned PLC, HMI/SCADA, servo motion, and industrial
+            automation systems for packaging, material handling, and conveyor applications.</div>
+          <ul class="tc-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Developed and optimized PLC programs using Ladder Logic, Function Block, and Structured Text for
+              bagging, palletizing, conveyor, and material-handling systems.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Designed HMI/SCADA interfaces and integrated PLCs with servo drives and industrial devices using
+              Ethernet/IP and Modbus TCP/IP for real-time monitoring, alarms, and machine control.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Programmed servo motion control, configured PID tuning, and commissioned encoders, photoelectric
+              sensors, and multi-axis conveyor systems to achieve accurate positioning and synchronized operation.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Implemented automation sequences, safety interlocks, photoeyes, scanners, and operator control
+              panels for packaging, palletizing, and conveyor systems, ensuring safe and reliable machine operation.
+            </li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" />
+              </svg>Led machine commissioning, FAT/SAT validation, troubleshooting, and field support while
+              collaborating with electrical, mechanical, and production teams to deliver turnkey automation projects.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <section class="footer-cta" id="contact">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="margin-left:auto; margin-right:auto;">Get in touch</div>
+      <h2>Let's ship your next release without the defects.</h2>
+      <p>Nagpur, Maharashtra · Open to Salesforce QA &amp; Testing roles</p>
+      <div class="footer-actions">
+        <a class="btn btn-dark" href="mailto:prafulbhanarkar200@gmail.com">prafulbhanarkar200@gmail.com</a>
+        <a class="btn btn-outline" href="tel:9545148501">9545148501</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank"
+          rel="noopener">LinkedIn</a>
+        <a class="btn btn-outline" href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank"
+          rel="noopener">Trailhead</a>
+      </div>
+      <!-- <div class="edu-line">B.E., Dr. D. Y. Patil College of Engineering — 67.2%</div> -->
+    </div>
+  </section>
+
+  <footer class="bottom">© 2026 Praful Bhanarkar · Built for Salesforce Quality Engineering roles</footer>
+
+  <script>
+    // ---- Reveal on scroll ----
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ---- Console typing loop ----
+    const lines = [
+      { text: 'running functional-suite.spec ...', cls: '' },
+      { text: '  \u2713 field mapping validated', cls: 'ok' },
+      { text: 'running regression-suite.spec ...', cls: '' },
+      { text: '  \u2713 page layouts stable', cls: 'ok' },
+      { text: 'running uat-suite.spec ...', cls: '' },
+      { text: '  \u2713 account-legal entity mapping', cls: 'ok' },
+      { text: '4 passed, 0 failed \u2014 0 defects', cls: 'ok' },
+    ];
+    const consoleBody = document.getElementById('consoleBody');
+
+    function typeLoop() {
+      consoleBody.innerHTML = '';
+      let i = 0;
+      function nextLine() {
+        if (i >= lines.length) {
+          setTimeout(typeLoop, 1600);
+          return;
+        }
+        const lineEl = document.createElement('div');
+        lineEl.className = 'console-line';
+        if (lines[i].cls) lineEl.classList.add(lines[i].cls);
+        consoleBody.appendChild(lineEl);
+        let charIdx = 0;
+        const full = lines[i].text;
+        lineEl.style.opacity = 1;
+        const typer = setInterval(() => {
+          lineEl.textContent = full.slice(0, charIdx + 1);
+          charIdx++;
+          if (charIdx >= full.length) {
+            clearInterval(typer);
+            i++;
+            setTimeout(nextLine, 220);
+          }
+        }, 22);
+      }
+      nextLine();
+    }
+    typeLoop();
+  </script>
+</body>
+</html>

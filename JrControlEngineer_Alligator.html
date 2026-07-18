@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jr. Control Engineer — Alligator Automations | Praful Bhanarkar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy-deep: #051937;
+      --navy: #0B2545;
+      --cloud-blue: #0176D3;
+      --sky-blue: #1B96FF;
+      --mint-pass: #04844B;
+      --mint-bright: #2ECC8F;
+      --alert-orange: #FF6B35;
+      --paper: #F4F7FB;
+      --white: #FFFFFF;
+      --ink: #16325C;
+      --muted: #5A7184;
+      --line: rgba(11, 37, 69, 0.10);
+      --shadow: 0 20px 50px -20px rgba(5, 25, 55, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+      color: var(--navy-deep);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    ::selection {
+      background: var(--sky-blue);
+      color: #fff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      position: relative;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cloud-blue);
+      background: rgba(1, 118, 211, 0.08);
+      border: 1px solid rgba(1, 118, 211, 0.18);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+      box-shadow: 0 0 0 3px rgba(46, 204, 143, 0.25);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Nav (shared across all pages) ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(244, 247, 251, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy-deep);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cloud-blue), var(--sky-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .navlinks a {
+      transition: color .2s;
+    }
+
+    .navlinks a:hover,
+    .navlinks a.active {
+      color: var(--cloud-blue);
+    }
+
+    .nav-cta {
+      background: var(--navy-deep);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--cloud-blue);
+      transform: translateY(-1px);
+    }
+
+    @media(max-width:760px) {
+      .navlinks {
+        display: none;
+      }
+    }
+
+    /* ---------- Page hero ---------- */
+    .page-hero {
+      padding: 150px 0 80px;
+      background:
+        radial-gradient(1200px 500px at 15% -10%, rgba(1, 118, 211, 0.14), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(46, 204, 143, 0.10), transparent 60%),
+        var(--navy-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 26px;
+      transition: color .2s;
+    }
+
+    .back-link:hover {
+      color: var(--mint-bright);
+    }
+
+    .page-hero .eyebrow {
+      background: rgba(46, 204, 143, 0.12);
+      border-color: rgba(46, 204, 143, 0.3);
+      color: var(--mint-bright);
+    }
+
+    .page-hero .eyebrow::before {
+      background: var(--sky-blue);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(30px, 4.2vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #fff;
+      max-width: 760px;
+    }
+
+    .role-meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .role-meta div {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.65);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role-meta svg {
+      flex: none;
+    }
+
+    .page-hero-sub {
+      margin-top: 22px;
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 700px;
+    }
+
+    .hero-stats {
+      margin-top: 40px;
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- Test-case timeline ---------- */
+    .logbook {
+      background: var(--white);
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(24px, 3.2vw, 32px);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--mint-bright), var(--line));
+    }
+
+    .test-case {
+      position: relative;
+      margin-bottom: 34px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 26px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .test-case:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(1, 118, 211, 0.25);
+    }
+
+    .test-case::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 30px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--mint-bright);
+      box-shadow: 0 0 0 5px rgba(46, 204, 143, 0.18);
+    }
+
+    .tc-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .tc-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--mint-pass);
+      background: rgba(4, 132, 75, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .tc-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mint-pass);
+      border: 1px solid rgba(4, 132, 75, 0.35);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .tc-body {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .tc-body.reverse {
+      grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .tc-body.reverse .tc-image {
+      order: -1;
+    }
+
+    @media(max-width:820px) {
+
+      .tc-body,
+      .tc-body.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .tc-body.reverse .tc-image {
+        order: 0;
+      }
+    }
+
+    .tc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .tc-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .tc-list li svg {
+      flex: none;
+      margin-top: 3px;
+    }
+
+    .tc-image {
+      text-align: center;
+    }
+
+    .tc-image img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    /* ---------- CTA / footer ---------- */
+    .footer-cta {
+      background: var(--paper);
+      text-align: center;
+      padding: 100px 0 60px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-cta h2 {
+      font-size: clamp(24px, 3.6vw, 36px);
+    }
+
+    .footer-cta p {
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    .footer-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn-dark {
+      background: var(--navy-deep);
+      color: #fff;
+    }
+
+    .btn-dark:hover {
+      background: var(--cloud-blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy-deep);
+      color: #fff;
+      border-color: var(--navy-deep);
+      transform: translateY(-2px);
+    }
+
+    .footer.bottom {
+      padding: 26px 0;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .hover1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1b9cff;
+  transition: color .2s;
+  text-decoration: none;
+}
+
+.hover1:hover {
+  color:#2ecc71; /* change to any shade you like, e.g. #2ecc71 */
+}
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="brand"><span class="brand-mark">PB</span> Praful Bhanarkar</div>
+      <div class="navlinks">
+        <a href="Praful_Bhanarkar_Portfolio.html#summary">Summary</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#certs">Certifications</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#skills">Skills</a>
+        <a href="Praful_Bhanarkar_Portfolio.html#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:prafulbhanarkar200@gmail.com">Hire me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <div class="page-hero">
+    <div class="wrap reveal">
+      <a class="back-link" href="Praful_Bhanarkar_Portfolio.html#experience" style="display:flex; align-items:center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="margin-right:8px;">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+        Back to Work Experience
+      </a>
+      <div class="eyebrow">TC-000 · Experience Log</div>
+
+
+
+      <h1>Jr. Control Engineer — <span style="color: #1b96ff;">Alligator Automations</span></h1>
+
+      <div class="role-meta">
+        <div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Pune, MH, IN
+        </div>
+        <div>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2ECC8F" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <path d="M16 2v4M8 2v4M3 10h18" />
+          </svg>
+          June 2018 – November 2021
+        </div>
+
+
+      
+<a class="hover1" href="https://www.alligatorautomations.com/" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+    <span>Official Site: Alligator Automations</span>
+  </a>
+</div>
+
+
+      <p class="page-hero-sub">Designed, programmed, and commissioned PLC, HMI/SCADA, servo motion, and industrial
+        automation systems for packaging, material handling, and conveyor applications.</p>
+
+      <div class="hero-stats">
+        <div class="stat"><b style="color: #1b96ff;">3+</b><span>Years in Role</span></div>
+        <div class="stat"><b style="color: #2ecc8f;">5</b><span>Automation Focus Areas</span></div>
+        <div class="stat"><b style="color: #ff6b35;">2</b><span>Comms Protocols Integrated</span></div>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+  <!-- ===================== EXPERIENCE LOG ===================== -->
+  <section class="logbook">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"
+          style="color:var(--cloud-blue); background:rgba(1,118,211,0.08); border-color:rgba(1,118,211,0.18);">Scope of
+          Work</div>
+        <h2>Control systems, from logic to live line.</h2>
+        <p>A breakdown of the design, integration, and commissioning work carried out across bagging, palletizing, and
+          conveyor automation projects.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000.1</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-body">
+            <ul class="tc-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Designed, configured, and optimized PLC &amp; HMI/SCADA control logic for custom packaging and
+                material-handling systems.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Developed and tuned PLC programs (ladder logic, function blocks, structured text) for discrete and
+                sequence control in bagging, palletizing, and conveyor systems.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Integrated control systems with HMI screens for operator control, real-time status display, and
+                alarm/event logging for plant machines.</li>
+            </ul>
+            <div class="tc-image">
+              <img
+                src="https://mecaluxcom.cdnwm.com/img/box-carton-conveyor/box-carton-conveyor.1.13.jpg?imwidth=640&imdensity=1"
+                alt="Conveyor automation system">
+            </div>
+          </div>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000.2</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-body reverse">
+            <div class="tc-image">
+              <img src="https://instrumentationblog.com/wp-content/uploads/2020/08/Communication-Protocols.jpg"
+                alt="Industrial communication protocols">
+            </div>
+            <ul class="tc-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Implemented communication protocols (Ethernet/IP, Modbus TCP/IP) between PLCs, servo drives, and
+                supervisory interfaces to improve reliability and system visibility.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Programmed and calibrated servo-based motion control for packaging lines and robotic modules.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Configured motion profiles and PID tuning on servo drives to achieve precise indexing and
+                synchronized motion across multi-axis conveyors and bagging equipment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000.3</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-body">
+            <ul class="tc-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Installed and commissioned feedback devices (encoders, photocells) to ensure positional
+                repeatability and correct phase transitions, reducing product defects and mechanical wear.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Automated primary and secondary packaging, palletizing, and conveyor systems.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Implemented control sequences for a range of automated solutions — bag placement, case packing,
+                hybrid palletizing, and conveyor transfer logic.</li>
+            </ul>
+            <div class="tc-image">
+              <img
+                src="https://mecaluxcom.cdnwm.com/img/box-carton-conveyor/box-carton-conveyor.1.13.jpg?imwidth=640&imdensity=1"
+                alt="Packaging and palletizing line">
+            </div>
+          </div>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000.4</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-body reverse">
+            <div class="tc-image">
+              <img src="https://blogs.aashgates.com/public/.ChatGPT_Image_Jul_1__2025__11_47_27_PM_m.png"
+                alt="Machine commissioning and FAT/SAT testing">
+            </div>
+            <ul class="tc-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Programmed logic to manage interlocking safety circuits, photoeyes, scanners, and push-button
+                operator panels to ensure smooth and safe machine operation.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Led commissioning, FAT/SAT testing, and on-site troubleshooting for turnkey automation
+                installations.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Performed machine commissioning and Factory/Site Acceptance Tests with mechanical and electrical
+                teams to validate system functionality against design specifications.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="test-case reveal">
+          <div class="tc-head">
+            <span class="tc-id">TC-000.5</span>
+            <span class="tc-status">✓ Passed</span>
+          </div>
+          <div class="tc-body">
+            <ul class="tc-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Diagnosed PLC logic faults, field I/O issues, and communication errors under live conditions;
+                applied systematic debugging practices to reduce commissioning delays.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Collaborated with multidisciplinary engineering teams on complex automation builds.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#04844B" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Contributed to continuous improvement initiatives, standardizing control modules and HMI elements
+                to improve maintainability and operator usability across multiple deployment platforms.</li>
+            </ul>
+            <div class="tc-image">
+              <img
+                src="https://cdn.automationforum.co/uploads/2026/01/PLC-Permissive-Logic-Troubleshooting-Procedure-for-Instrumentation-Engineers-1-scaled.jpg"
+                alt="PLC troubleshooting and teamwork">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <section class="footer-cta" id="contact">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="margin-left:auto; margin-right:auto;">Get in touch</div>
+      <h2>Let's ship your next release without the defects.</h2>
+      <p>Nagpur, Maharashtra · Open to Salesforce QA &amp; Testing roles</p>
+      <div class="footer-actions">
+        <a class="btn btn-dark" href="mailto:prafulbhanarkar200@gmail.com">prafulbhanarkar200@gmail.com</a>
+        <a class="btn btn-outline" href="tel:9545148501">9545148501</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank"
+          rel="noopener">LinkedIn</a>
+        <a class="btn btn-outline" href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank"
+          rel="noopener">Trailhead</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bottom">© 2026 Praful Bhanarkar · Validating the Code, Securing the Cloud, Empowering the Users.
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+
+</body>
+
+</html>
