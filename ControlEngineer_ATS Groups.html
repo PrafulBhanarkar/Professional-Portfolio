@@ -178,7 +178,7 @@
       }
     }
 
-    .back-link {
+   /* .back-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -192,7 +192,24 @@
 
     .back-link:hover {
       color: #2ecc8f;
-    }
+    } */
+
+    .back-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 26px;
+  transition: color .2s;
+}
+
+.back-link:hover {
+  color: #2ecc8f;
+}
 
     /* ---------- Contacts Icon CSS ---------- */
     /* Button Container Structure */
@@ -321,7 +338,7 @@
     </div>
 
     <div class="page-hero">
-      <div class="wrap reveal">
+      <div class="wrap reveal max-w-5xl mx-auto relative z-10">
         <a class="back-link" href="index.html#experience" style="display:flex; align-items:center;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             style="margin-right:8px;">
@@ -329,7 +346,6 @@
           </svg>
           Back to Work Experience
         </a>
-        <!-- <div class="eyebrow">TC-000 · Experience Log</div> -->
 
 
         <div class="max-w-5xl mx-auto relative z-10">
