@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -153,8 +153,7 @@
       transition: color .2s;
     }
 
-    .navlinks a:hover,
-    .navlinks a.active {
+    .navlinks a:hover {
       color: var(--cloud-blue);
     }
 
@@ -179,7 +178,7 @@
       }
     }
 
-.back-link {
+    .back-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -195,24 +194,118 @@
       color: #2ecc8f;
     }
 
-    
+    /* ---------- Contacts Icon CSS ---------- */
+    /* Button Container Structure */
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
 
+    /* Base Pill Button Structure */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* --- Dark Button Variant (Email) --- */
+    .btn-cta.btn-dark {
+      background-color: #001f3f;
+      color: #ffffff;
+      border: 1px solid #001f3f;
+    }
+
+    .btn-cta.btn-dark:hover {
+      background-color: #001124;
+      border-color: #001124;
+    }
+
+    /* --- Outline Button Variants (Phone, LinkedIn, Trailblazer) --- */
+    .btn-cta.btn-outline {
+      background-color: transparent;
+      color: #001f3f;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Global Vector Icon Scaling */
+    .btn-cta .icon-vector {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* --- Specific Icon Path Styles & Hover States --- */
+
+    /* 1. Email Icon */
+    .btn-dark .icon-mail {
+      fill: none;
+      stroke: #10b981;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* 2. Phone Button */
+    .phone-btn .icon-phone {
+      fill: none;
+      stroke: #0077b5;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .phone-btn:hover {
+      border-color: #0077b5;
+      background-color: rgba(0, 119, 181, 0.05);
+    }
+
+    /* 3. LinkedIn Button */
+    .linkedin-btn .icon-linkedin {
+      fill: #0077b5;
+    }
+
+    .linkedin-btn:hover {
+      border-color: #0077b5;
+      background-color: rgba(0, 119, 181, 0.05);
+    }
+
+    /* 4. Trailblazer Button */
+    .trailblazer-btn .icon-trailblazer {
+      fill: none;
+      stroke: #ff5a1f;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .trailblazer-btn:hover {
+      border-color: #ff5a1f;
+      background-color: rgba(255, 90, 31, 0.05);
+    }
   </style>
 </head>
 
-  <header>
-    <nav>
-      <div class="brand"><span class="brand-mark">PB</span> Praful Bhanarkar</div>
-      <div class="navlinks">
-        <a href="Praful_Bhanarkar_Portfolio.html#summary">Summary</a>
-        <a href="Praful_Bhanarkar_Portfolio.html#certs">Certifications</a>
-        <a href="Praful_Bhanarkar_Portfolio.html#skills">Skills</a>
-        <a href="Praful_Bhanarkar_Portfolio.html#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <a class="nav-cta" href="mailto:prafulbhanarkar200@gmail.com">Hire me</a>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <div class="brand"><span class="brand-mark">PB</span> Praful Bhanarkar</div>
+    <div class="navlinks">
+      <a href="Praful_Bhanarkar_Portfolio.html#summary">Summary</a>
+      <a href="Praful_Bhanarkar_Portfolio.html#certs">Certifications</a>
+      <a href="Praful_Bhanarkar_Portfolio.html#skills">Skills</a>
+      <a href="Praful_Bhanarkar_Portfolio.html#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="mailto:prafulbhanarkar200@gmail.com">Hire me</a>
+  </nav>
+</header>
 
 
 <body class="bg-paper text-ink font-sans antialiased selection:bg-sky selection:text-white">
@@ -226,94 +319,97 @@
         class="absolute bottom-[-10%] right-[5%] w-[600px] h-[400px] rounded-full bg-gradient-to-br from-mint-bright to-mint-bright/10 blur-[110px]">
       </div>
     </div>
-    
-    <a class="back-link" href="index.html#experience" style="display:flex; align-items:center;">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        style="margin-right:8px;">
-        <path d="M19 12H5M12 19l-7-7 7-7" />
-      </svg>
-      Back to Work Experience
-    </a>
 
-    <div class="max-w-5xl mx-auto relative z-10">
-      <div
-        class="inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-widest text-mint-bright bg-mint-bright/10 border border-mint-bright/20 px-3.5 py-1.5 rounded-full mb-6">
-        <span class="w-2 h-2 rounded-full bg-mint-bright animate-pulse"></span>
-        TC-000 · Experience Log
-      </div>
-
-
-      <h1
-        class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-4xl">
-        Control Engineer — <span class="text-sky">ATS Group</span>
-      </h1>
-
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-6 text-[#A0B0C0] text-sm font-medium">
-        <span class="flex items-center gap-2">
-          <i data-lucide="map-pin" class="w-4 h-4 text-mint-bright"></i> Pune, Maharashtra, IN
-        </span>
-        <span class="flex items-center gap-2">
-          <i data-lucide="calendar" class="w-4 h-4 text-mint-bright"></i> 2020 – 2021 (1 Year)
-        </span>
-        <a href="https://www.ats-group.com/" target="_blank" rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-sky hover:text-mint-bright transition-colors">
-          <i data-lucide="external-link" class="w-4 h-4"></i> Official Site: ATS Group
+    <div class="page-hero">
+      <div class="wrap reveal">
+        <a class="back-link" href="index.html#experience" style="display:flex; align-items:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="margin-right:8px;">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Back to Work Experience
         </a>
-      </div>
+        <!-- <div class="eyebrow">TC-000 · Experience Log</div> -->
 
-      <p class="mt-6 text-[#D1D9E0] text-base md:text-lg leading-relaxed max-w-3xl" style="max-width: 60rem;">
-        Control Engineer specializing in industrial automation and turnkey material handling solutions. Experienced in
-        deploying, commissioning, and optimization of robust programmable logic controls (PLCs) and conveying systems at
-        <span class="text-white font-medium underline decoration-mint-bright decoration-2 underline-offset-4">Asian
-          Paints Vizag</span> and <span
-          class="text-white font-medium underline decoration-sky decoration-2 underline-offset-4">FIAT Automotive</span>
-        plants. Part of a global industrial group delivering smart paint-shop conveyors, monorails, and assembly
-        structures.
-      </p>
 
-      <div class="flex flex-wrap items-center gap-3 mt-8">
-        <span class="text-xs text-[#A0B0C0] font-mono mr-2">Jump to section:</span>
-        <a href="#experience"
-          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
-          Work Experience
-        </a>
-        <a href="#projects"
-          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
-          Featured Projects
-        </a>
-        <a href="#skills"
-          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
-          Technical Skills
-        </a>
-        <a href="#about"
-          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
-          About Profile
-        </a>
-        <a href="#contact"
-          class="px-4 py-2 rounded-full bg-sky/20 hover:bg-sky/30 text-sky hover:text-white text-xs font-semibold tracking-wide transition-all border border-sky/30">
-          Contact Me
-        </a>
-      </div>
+        <div class="max-w-5xl mx-auto relative z-10">
+          <div
+            class="inline-flex items-center gap-2 font-mono text-[11px] font-semibold tracking-widest text-mint-bright bg-mint-bright/10 border border-mint-bright/20 px-3.5 py-1.5 rounded-full mb-6">
+            <span class="w-2 h-2 rounded-full bg-mint-bright animate-pulse"></span>
+            TC-000 · Experience Log
+          </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-10 border-t border-white/10 max-w-4xl">
-        <div>
-          <div class="font-display font-bold text-3xl md:text-4xl text-white">2</div>
-          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Marquee Plants</div>
+
+          <h1
+            class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-4xl">
+            Control Engineer — <span class="text-sky">ATS Group</span>
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-6 text-[#A0B0C0] text-sm font-medium">
+            <span class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-mint-bright"></i> Pune, Maharashtra, IN
+            </span>
+            <span class="flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-mint-bright"></i> 2020 – 2021 (1 Year)
+            </span>
+            <a href="https://www.ats-group.com/" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-1.5 text-sky hover:text-mint-bright transition-colors">
+              <i data-lucide="external-link" class="w-4 h-4"></i> Official Site: ATS Group
+            </a>
+          </div>
+
+          <p class="mt-6 text-[#D1D9E0] text-base md:text-lg leading-relaxed max-w-3xl" style="max-width: 60rem;">
+            Control Engineer specializing in industrial automation and turnkey material handling solutions. Experienced
+            in
+            deploying, commissioning, and optimization of robust programmable logic controls (PLCs) and conveying
+            systems at
+            <span class="text-white font-medium underline decoration-mint-bright decoration-2 underline-offset-4">Asian
+              Paints Vizag</span> and <span
+              class="text-white font-medium underline decoration-sky decoration-2 underline-offset-4">FIAT
+              Automotive</span>
+            plants. Part of a global industrial group delivering smart paint-shop conveyors, monorails, and assembly
+            structures.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 mt-8">
+            <span class="text-xs text-[#A0B0C0] font-mono mr-2">Jump to section:</span>
+            <a href="#experience"
+              class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+              Work Experience
+            </a>
+            <a href="#projects"
+              class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+              Featured Projects
+            </a>
+            <a href="#skills"
+              class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+              Technical Skills
+            </a>
+            <a href="#about"
+              class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold tracking-wide transition-all border border-white/10">
+              About Profile
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-10 border-t border-white/10 max-w-4xl">
+            <div>
+              <div class="font-display font-bold text-3xl md:text-4xl text-white">2</div>
+              <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Marquee Plants</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-3xl md:text-4xl text-sky">100%</div>
+              <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Handovers Achieved</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-3xl md:text-4xl text-mint-bright">5+</div>
+              <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">PLC/HMI Deployments</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-3xl md:text-4xl text-alert">0</div>
+              <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Safety Incidents</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="font-display font-bold text-3xl md:text-4xl text-sky">100%</div>
-          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Handovers Achieved</div>
-        </div>
-        <div>
-          <div class="font-display font-bold text-3xl md:text-4xl text-mint-bright">5+</div>
-          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">PLC/HMI Deployments</div>
-        </div>
-        <div>
-          <div class="font-display font-bold text-3xl md:text-4xl text-alert">0</div>
-          <div class="text-xs text-[#A0B0C0] uppercase tracking-wider font-mono mt-1">Safety Incidents</div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
@@ -548,8 +644,8 @@
         <div
           class="bg-white rounded-2xl border border-navy-brand/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
           <div class="relative h-56 md:h-64 overflow-hidden">
-            <img src="Asian Paints Vizag — Paint Shop Automation.png"
-              alt="Asian Paints Vizag Automation" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+            <img src="Asian Paints Vizag — Paint Shop Automation.png" alt="Asian Paints Vizag Automation"
+              class="w-full h-full object-cover" referrerPolicy="no-referrer">
             <div
               class="absolute top-4 left-4 bg-navy-deep text-white text-[11px] font-mono px-3 py-1 rounded-full font-semibold">
               PROJECT LOG: PRJ-01
@@ -606,8 +702,8 @@
         <div
           class="bg-white rounded-2xl border border-navy-brand/10 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
           <div class="relative h-56 md:h-64 overflow-hidden">
-            <img src="FIAT India — Automotive Assembly Lines.png"
-              alt="FIAT Automotive Ranjangaon Controls" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+            <img src="FIAT India — Automotive Assembly Lines.png" alt="FIAT Automotive Ranjangaon Controls"
+              class="w-full h-full object-cover" referrerPolicy="no-referrer">
             <div
               class="absolute top-4 left-4 bg-navy-deep text-white text-[11px] font-mono px-3 py-1 rounded-full font-semibold">
               PROJECT LOG: PRJ-02
@@ -946,26 +1042,52 @@
         Let's ship your next release without the defects.
       </h2>
       <p class="text-muted text-xs md:text-sm max-w-xl mx-auto leading-relaxed">
-        Based in Nagpur, Maharashtra. Open to Salesforce QA, systems validation, manual testing, or control systems
-        consulting roles globally or remote.
+        Based in Nagpur, Maharashtra. Open to Salesforce QA, Systems Validation, Manual Testing roles Globally or
+        Remote.
       </p>
 
-      <div class="flex flex-wrap justify-center gap-3 md:gap-4 pt-4">
-        <a href="mailto:prafulbhanarkar200@gmail.com"
-          class="bg-navy-deep hover:bg-cloud text-white px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4 text-mint-bright"></i> prafulbhanarkar200@gmail.com
+      <div class="footer-actions">
+        <!-- Email Button -->
+        <a class="btn-cta btn-dark" href="mailto:prafulbhanarkar200@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="icon-vector icon-mail">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          prafulbhanarkar200@gmail.com
         </a>
-        <a href="tel:9545148501"
-          class="border border-navy-brand/10 hover:border-navy-deep text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-navy-deep/5 transition-all duration-200 flex items-center gap-2">
-          <i data-lucide="phone" class="w-4 h-4 text-cloud"></i> +91 9545148501
+
+        <!-- Phone Button -->
+        <a class="btn-cta btn-outline phone-btn" href="tel:9545148501">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="icon-vector icon-phone">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          +91 9545148501
         </a>
-        <a href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank" rel="noopener noreferrer"
-          class="border border-navy-brand/10 hover:border-cloud text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-cloud/5 transition-all duration-200 flex items-center gap-2">
-          <i data-lucide="linkedin" class="w-4 h-4 text-sky"></i> LinkedIn Profile
+
+        <!-- LinkedIn Button -->
+        <a class="btn-cta btn-outline linkedin-btn" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/"
+          target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+            class="icon-vector icon-linkedin">
+            <path
+              d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zm15.11 13.02h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z" />
+          </svg>
+          LinkedIn Profile
         </a>
-        <a href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank" rel="noopener noreferrer"
-          class="border border-navy-brand/10 hover:border-alert text-navy-deep px-6 py-3 rounded-full text-xs md:text-sm font-semibold tracking-wide hover:bg-alert/5 transition-all duration-200 flex items-center gap-2">
-          <i data-lucide="award" class="w-4 h-4 text-alert"></i> Trailblazer Portfolio
+
+        <!-- Trailblazer Button -->
+        <a class="btn-cta btn-outline trailblazer-btn" href="https://www.salesforce.com/trailblazer/pbhanarkar"
+          target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+            class="icon-vector icon-trailblazer">
+            <path
+              d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
+            </path>
+            <circle cx="12" cy="8" r="6"></circle>
+          </svg>
+          Trailblazer Portfolio
         </a>
       </div>
     </div>

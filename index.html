@@ -34,6 +34,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -56,10 +58,6 @@
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    .mono {
-      font-family: 'JetBrains Mono', monospace;
     }
 
     ::selection {
@@ -86,6 +84,16 @@
     section {
       position: relative;
       padding: 112px 0;
+    }
+
+    @media(max-width:480px) {
+      .wrap {
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
     }
 
     .eyebrow {
@@ -377,12 +385,6 @@
       position: relative;
     }
 
-    .illustration {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
     .console {
       margin-top: 22px;
       background: rgba(5, 15, 35, 0.6);
@@ -437,21 +439,6 @@
       font-weight: 600;
     }
 
-    .console-cursor {
-      display: inline-block;
-      width: 7px;
-      height: 14px;
-      background: var(--mint-bright);
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
     /* ---------- Summary ---------- */
 
     .summary {
@@ -462,6 +449,10 @@
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
       gap: 56px;
+    }
+
+    .summary-grid>* {
+      min-width: 0;
     }
 
     @media(max-width:860px) {
@@ -485,7 +476,9 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 26px;
-      width: 570px;
+      width: 100%;
+      max-width: 570px;
+      min-width: 0;
       height: fit-content;
     }
 
@@ -865,14 +858,6 @@
       font-size: 16.5px;
     }
 
-    .footer-actions {
-      margin-top: 34px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
     .btn-dark {
       background: var(--navy-deep);
       color: #fff;
@@ -883,30 +868,170 @@
       transform: translateY(-2px);
     }
 
-    .btn-outline {
-      border: 1px solid var(--line);
-      color: var(--ink);
+    /* ---------- Advance Footer CSS ---------- */
+
+    .bg-white {
+      background-color: #ffffff;
     }
 
-    .btn-outline:hover {
-      background: var(--navy-deep);
-      color: #fff;
-      border-color: var(--navy-deep);
-      transform: translateY(-2px);
+    .border-t {
+      border-top-width: 1px;
+      border-top-style: solid;
     }
 
-    .edu-line {
-      margin-top: 40px;
-      font-size: 14px;
-      color: var(--muted);
+    .border-navy-brand\/10 {
+      border-color: rgba(27, 42, 74, 0.1);
     }
 
-    footer.bottom {
-      padding: 28px 0;
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .text-center {
       text-align: center;
-      font-size: 12.5px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
+    }
+
+    .text-xs {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+
+    .text-muted {
+      color: #6b7280;
+    }
+
+    .max-w-4xl {
+      max-width: 56rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .space-y-2>*+* {
+      margin-top: 0.5rem;
+    }
+
+    .font-mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
+
+    .text-\[\#A0B0C0\] {
+      color: #A0B0C0;
+    }
+
+    .tracking-wider {
+      letter-spacing: 0.05em;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    /* ---------- Contacts Icon CSS ---------- */
+    /* Button Container Structure */
+    .footer-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* Base Pill Button Structure */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* --- Dark Button Variant (Email) --- */
+    .btn-cta.btn-dark {
+      background-color: #001f3f;
+      color: #ffffff;
+      border: 1px solid #001f3f;
+    }
+
+    .btn-cta.btn-dark:hover {
+      background-color: #001124;
+      border-color: #001124;
+    }
+
+    /* --- Outline Button Variants (Phone, LinkedIn, Trailblazer) --- */
+    .btn-cta.btn-outline {
+      background-color: transparent;
+      color: #001f3f;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Global Vector Icon Scaling */
+    .btn-cta .icon-vector {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* --- Specific Icon Path Styles & Hover States --- */
+
+    /* 1. Email Icon */
+    .btn-dark .icon-mail {
+      fill: none;
+      stroke: #10b981;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* 2. Phone Button */
+    .phone-btn .icon-phone {
+      fill: none;
+      stroke: #0077b5;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .phone-btn:hover {
+      border-color: #0077b5;
+      background-color: rgba(0, 119, 181, 0.05);
+    }
+
+    /* 3. LinkedIn Button */
+    .linkedin-btn .icon-linkedin {
+      fill: #0077b5;
+    }
+
+    .linkedin-btn:hover {
+      border-color: #0077b5;
+      background-color: rgba(0, 119, 181, 0.05);
+    }
+
+    /* 4. Trailblazer Button */
+    .trailblazer-btn .icon-trailblazer {
+      fill: none;
+      stroke: #ff5a1f;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .trailblazer-btn:hover {
+      border-color: #ff5a1f;
+      background-color: rgba(255, 90, 31, 0.05);
     }
   </style>
 </head>
@@ -1241,7 +1366,7 @@
             <span class="tc-id">TC-004</span>
             <span class="tc-status">● Present</span>
           </div>
-          <div class="tc-role">Salesforce Quality Analyst — Synaptic</div>
+          <div class="tc-role">Synaptic — <span style="color: #1bff45;">Salesforce Quality Analyst</span></div>
           <div class="tc-meta">DDWA Project · Feb 2025 – Present</div>
           <div class="tc-desc">Worked on the DDWA Salesforce implementation project focusing on validating data
             workflows, automation, and integrations.</div>
@@ -1270,7 +1395,7 @@
             <span class="tc-id">TC-003</span>
             <span class="tc-status">✓ Passed</span>
           </div>
-          <div class="tc-role">Sr. Quality Analyst — Makedian Softech Solutions Pvt. Ltd.</div>
+          <div class="tc-role">Makedian Softech Solutions Pvt. Ltd. — <span style="color: #1bcaff;">Sr. Quality Analyst</span></div>
           <div class="tc-meta">September 2024 – January 2025</div>
           <div class="tc-desc">Senior QA for a global organization, testing 48+ projects across India and international
             locations.</div>
@@ -1298,7 +1423,7 @@
             <span class="tc-id">TC-002</span>
             <span class="tc-status">✓ Passed</span>
           </div>
-          <div class="tc-role">Jr. Quality Analyst — Makedian Softech Solutions Pvt. Ltd.</div>
+          <div class="tc-role">Makedian Softech Solutions Pvt. Ltd. — <span style="color: #1b96ff;">Jr. Quality Analyst</span></div>
           <div class="tc-meta">October 2022 – September 2024</div>
           <div class="tc-desc">Supported 35+ Salesforce projects for domestic and international clients across Sales,
             Service and Marketing Cloud.</div>
@@ -1327,9 +1452,9 @@
             <span class="tc-id">TC-001</span>
             <span class="tc-status">✓ Passed</span>
           </div>
-          
+
           <a href="ControlEngineer_ATS Groups.html" class="tc-role-link">
-            <div class="tc-role">Engineer Controls — ATS Conveyors India Pvt. Ltd.</div>
+            <div class="tc-role">ATS Conveyors India Pvt. Ltd. — <span style="color: #1b96ff;">Engineer Controls</span></div>
           </a>
           <div class="tc-meta">November 2021 – June 2022</div>
           <div class="tc-desc">Contributed to automation projects for leading automotive manufacturing plants by
@@ -1359,9 +1484,8 @@
             <span class="tc-id">TC-000</span>
             <span class="tc-status">✓ Passed</span>
           </div>
-          
           <a href="JrControlEngineer_Alligator.html" class="tc-role-link">
-            <div class="tc-role">Jr. Control Engineer — Alligator Automations</div>
+            <div class="tc-role">Alligator Automations — <span style="color: #1b96ff;">Jr. Control Engineer</span></div>
           </a>
           <div class="tc-meta">June 2018 – November 2021</div>
           <div class="tc-desc">Designed, programmed, and commissioned PLC, HMI/SCADA, servo motion, and industrial
@@ -1401,20 +1525,64 @@
     <div class="wrap reveal">
       <div class="eyebrow" style="margin-left:auto; margin-right:auto;">Get in touch</div>
       <h2>Let's ship your next release without the defects.</h2>
-      <p>Nagpur, Maharashtra · Open to Salesforce QA &amp; Testing roles</p>
+      <p>Based in Nagpur, Maharashtra. Open to Salesforce QA, Systems Validation, Manual Testing roles Globally or
+        Remote.</p>
       <div class="footer-actions">
-        <a class="btn btn-dark" href="mailto:prafulbhanarkar200@gmail.com">prafulbhanarkar200@gmail.com</a>
-        <a class="btn btn-outline" href="tel:9545148501">9545148501</a>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/" target="_blank"
-          rel="noopener">LinkedIn</a>
-        <a class="btn btn-outline" href="https://www.salesforce.com/trailblazer/pbhanarkar" target="_blank"
-          rel="noopener">Trailhead</a>
+        <!-- Email Button -->
+        <a class="btn-cta btn-dark" href="mailto:prafulbhanarkar200@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="icon-vector icon-mail">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          prafulbhanarkar200@gmail.com
+        </a>
+
+        <!-- Phone Button -->
+        <a class="btn-cta btn-outline phone-btn" href="tel:9545148501">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="icon-vector icon-phone">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          +91 9545148501
+        </a>
+
+        <!-- LinkedIn Button -->
+        <a class="btn-cta btn-outline linkedin-btn" href="https://www.linkedin.com/in/praful-bhanarkar-758999225/"
+          target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+            class="icon-vector icon-linkedin">
+            <path
+              d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.43c-1.14 0-2.06-.92-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.06-2.06 2.06zm15.11 13.02h-3.56v-5.6c0-1.34-.03-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29z" />
+          </svg>
+          LinkedIn Profile
+        </a>
+
+        <!-- Trailblazer Button -->
+        <a class="btn-cta btn-outline trailblazer-btn" href="https://www.salesforce.com/trailblazer/pbhanarkar"
+          target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+            class="icon-vector icon-trailblazer">
+            <path
+              d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
+            </path>
+            <circle cx="12" cy="8" r="6"></circle>
+          </svg>
+          Trailblazer Portfolio
+        </a>
       </div>
-      <!-- <div class="edu-line">B.E., Dr. D. Y. Patil College of Engineering — 67.2%</div> -->
     </div>
   </section>
 
-  <footer class="bottom">© 2026 Praful Bhanarkar · Built for Salesforce Quality Engineering roles</footer>
+
+  <footer class="bg-white border-t border-navy-brand/10 py-8 text-center text-xs text-muted">
+    <div class="max-w-4xl mx-auto px-6 space-y-2">
+      <div>© 2026 Praful Bhanarkar · Salesforce Quality Analyst &amp; Tech Professional</div>
+      <div class="font-mono text-[12px] text-[#A0B0C0] tracking-wider uppercase">
+        Breaking the Code · Securing the CRM · Delivering the Value
+      </div>
+    </div>
+  </footer>
 
   <script>
     // ---- Reveal on scroll ----
@@ -1464,6 +1632,8 @@
       nextLine();
     }
     typeLoop();
+
   </script>
 </body>
+
 </html>
